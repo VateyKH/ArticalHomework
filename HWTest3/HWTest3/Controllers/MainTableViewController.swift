@@ -19,7 +19,7 @@ class MainTableViewController: UITableViewController, MainTableViewControllerInt
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //articles = ArticalModel.downloadAllArticles()
+       
         mainViewPresenater = MainViewPresenter()
         
         mainViewPresenater?.returnDataLoad(viewDelegate:self)
@@ -78,9 +78,11 @@ class MainTableViewController: UITableViewController, MainTableViewControllerInt
         return cell
     }
     
+    }
+    
     
 
 
    
    
-}
+

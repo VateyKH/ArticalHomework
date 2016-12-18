@@ -20,23 +20,20 @@ class DetailViewPresenter{
     func dataLoad(viewController : DetailViewController){
        
         detailViewDdelegate = viewController
-        
         mainViewService.detailViewController = self
     }
+    
+    
     //post Data
     func postData(title: String, description: String, image: String){
-        print("Post Services")
+        
         mainViewService.postJsonData(title: title, description: description, image: image)
     }
     func uploadData(imageURL: UIImage){
         mainViewService.uploadImage(image: imageURL)
         
     }
-    
-    //View Data
- 
-    
-    
+   
     
 }
 

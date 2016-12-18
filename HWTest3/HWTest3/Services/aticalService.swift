@@ -8,11 +8,11 @@
 
 import UIKit
 class ArticleService{
+    
     var articles = [ArticalModel]()
     var mainViewPresenter: MainViewPresenterInterface?
     var detailViewController: DetailViewPresenterInterface?
     
-    //typealias DataHandler = (([String : AnyObject]) -> [String : AnyObject]?)
     
     func parseJsonData(page: Int, limit: Int){
         let url = URL(string:"http://120.136.24.174:1301/v1/api/articles?page=\(page)&limit=\(limit)")
@@ -34,7 +34,9 @@ class ArticleService{
                             for data in jsonData{
                                 self.articles.append(ArticalModel(JSON: data as! [String : AnyObject])!)
                             }
-                            print("your data here",jsonDictionary)
+                            
+                            print("your data here:",jsonDictionary)
+                            
                             self.mainViewPresenter?.returnData(data: self.articles)
                           
                         }
@@ -68,22 +70,21 @@ class ArticleService{
             print(error.localizedDescription)
         }
         
-        print("Json data",jsonDictionary)
+        print("Json data: ",jsonDictionary)
         
         let dataTask = URLSession.shared.dataTask(with: request){
             (data, response, error) in
-            if error != nil {
-                print("post go")
-                print (error?.localizedDescription)
-                    }
-            
-            else{
+            if error == nil {
                 let httpResponse = response as! HTTPURLResponse
                 print("got here no error")
                 if  httpResponse.statusCode == 200{
-                    print("aaaaaa")
-                    self.detailViewController?.postSuccess(message: "success")
                     
+                    self.detailViewController?.postSuccess(message: "success")
+                
+                    }
+            
+            else{
+                print (error?.localizedDescription)
 
             }
             
@@ -142,28 +143,24 @@ func uploadImage(image:UIImage)
                 let dataJson = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
         
         
-        print("upload image status",dataJson)
+        print("data image status",dataJson)
+        
         let imageUrl = dataJson["DATA"] as! String?
         
-        // call delegate
+        
         self.detailViewController?.sendImageSuccess(imageString: imageUrl!)
         
         
-        print("my data",dataJson["DATA"]!)
+        print("JSON Data",dataJson["DATA"]!)
         
     }
     task.resume()
 }
 
-func generateBoundaryString() -> String
-{
-    return "Boundary-\(NSUUID().uuidString)"
-}
-
-
-
-
-
+    func generateBoundaryString() -> String
+        {
+            return "Boundary-\(NSUUID().uuidString)"
+        }
 
 
 

@@ -15,7 +15,7 @@ protocol MainViewPresenterInterface {
 class MainViewPresenter: MainViewPresenterInterface {
     var mainViewService = ArticleService()
     var mainViewDelegate: MainTableViewControllerInterface!
-    //var mainViewService:ArticleService?
+    
     
     func returnDataLoad(viewDelegate: MainTableViewController) {
         mainViewDelegate = viewDelegate

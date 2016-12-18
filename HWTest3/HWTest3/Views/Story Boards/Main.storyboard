@@ -78,7 +78,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="MainDateLabel" destination="YzO-og-hN1" id="nAv-wh-Oe8"/>
+                                    <outlet property="MainDescriptioLabel" destination="YzO-og-hN1" id="dEL-T2-bGP"/>
                                     <outlet property="MainImageView" destination="GTV-FM-RnD" id="81U-A7-vyu"/>
                                     <outlet property="MainTitleLabel" destination="8BV-nm-qBe" id="fD1-4b-UFh"/>
                                 </connections>

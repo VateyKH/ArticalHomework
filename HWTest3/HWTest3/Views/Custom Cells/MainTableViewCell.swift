@@ -15,7 +15,7 @@ class MainTableViewCell: UITableViewCell {
     
     @IBOutlet weak var MainImageView: UIImageView!
     @IBOutlet weak var MainTitleLabel: UILabel!
-    @IBOutlet weak var MainDateLabel: UILabel!
+    @IBOutlet weak var MainDescriptioLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -31,7 +31,7 @@ class MainTableViewCell: UITableViewCell {
     
     func configCell(article: ArticalModel){
         MainTitleLabel.text = article.title
-        MainDateLabel.text = article.created_date
+        MainDescriptioLabel.text = article.description
         MainImageView.kf.setImage(with: URL(string: (article.image?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))!))
         
     }
